@@ -1,0 +1,135 @@
+<!--
+    * Start Bootstrap - Resume v7.0.4 (https://startbootstrap.com/theme/resume)
+    * Copyright 2013-2021 Start Bootstrap
+    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-resume/blob/master/LICENSE)
+
+    * Bootstrap v4.7.0 / v4.0.0 (https://getbootstrap.com/)
+    * Copyright 2011-2021 The Bootstrap Authors
+    * Copyright 2011-2021 Twitter, Inc.
+    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Sistema Multilojas - Login</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous"></script>
+        <!-- CSS (includes Bootstrap)-->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+        <!-- JS (includes Bootstrap)-->
+        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Sistema Multilojas</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#planos">Planos</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/empresario/login/">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/empresario/cadastro/">Cadastro</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5">
+            <h5 class="card-title text-center mb-5 fw-light fs-5">Login - Empresário</h5>
+            <form>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+                <label for="email">E-mail</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" name="senha" id="login" placeholder="Senha"/>
+                <label for="password">Senha</label>
+              </div>
+
+              <div class="w-100">
+                <p class="text-muted font-weight-bold">Não Possui Conta? <a href="/empresario/cadastro/" class="text-primary">Cadastrar</a></p>
+            </div>
+              <center>
+              <div class="d-grid">
+                <input class="btn button1 btn-primary btn-login text-uppercase fw-bold" type="submit" value="Entrar"/>
+              </div>
+              <hr class="my-4">
+              <div class="d-grid mb-2">
+                <button class="btn button1 btn-twitter btn-login text-uppercase fw-bold">
+                    Entrar com Twitter
+                </button>
+              </div>
+              <div>
+                <button class="btn button1 btn-facebook button1 btn-login text-uppercase fw-bold">
+                    Entrar com Facebook
+                </button>
+              </div>
+            </form>
+            
+          </div>
+          <div id="#error"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  const error = document.getElementById('#error');
+  const form = document.querySelector('form');
+  
+  form.onsubmit = (event) => {
+    event.preventDefault();
+
+    const dados = Object.fromEntries(new FormData(form));
+    
+    checkLogin(dados);
+
+  };
+
+  async function checkLogin(dados) {
+    const url = '/empresario/createAcess';
+    
+    const config = {
+      method: 'post',
+      body: JSON.stringify(dados),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    };
+    
+    const result = await (await fetch(url, config)).json();
+    if(result.error == 1){
+      const view = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Aviso: </strong>${result.mensage}
+        </div>`
+      error.insertAdjacentHTML('beforeend', view);
+    } else if(result.error == 0){
+      location.href = "/empresario";
+    }
+  }
+</script>
+
+</html>

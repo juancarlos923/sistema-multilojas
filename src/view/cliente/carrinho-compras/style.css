@@ -1,0 +1,31 @@
+body {
+  font-size: .875rem;
+  padding: 0;
+  margin: 0 auto !important;
+  background: rgb(39, 61, 102);
+  height: 100%;
+}
+
+.container-fluid {
+  float: left;
+  margin-left: 5%;
+}
+
+@media (max-width: 1200px) {
+  .btn-lg {
+    margin-left: 5%;
+  }
+}
+
+@media (max-width: 1366px) {
+  .btn-lg {
+    margin-left: 5%;
+    width:75%
+  }
+}
+
+@media (min-width: 1920px) {
+  .btn-lg {
+    margin-left: 0;
+  }
+}

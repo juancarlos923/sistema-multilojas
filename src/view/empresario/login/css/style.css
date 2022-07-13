@@ -1,0 +1,28 @@
+body {
+    background: rgb(39, 61, 102);
+}
+
+.btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+}
+
+.btn-twitter {
+    color: white !important;
+    background-color: #42AEEC;
+}
+
+.btn-facebook {
+    color: white !important;
+    background-color: #3b5998;
+}
+
+.button1 {
+    width: 200px;
+    border-radius: 8px;
+}
+.button1:hover {
+    opacity: 2
+}
+/* rgb(39, 61, 102); == #273d66 */

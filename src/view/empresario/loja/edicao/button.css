@@ -1,0 +1,52 @@
+.delete {
+    margin-left: 27.5%;
+  }
+  .delete a {
+    color: red;
+    text-decoration: none;
+    font-weight: 550;
+    font-size: 18px;
+  }
+  .user_content path {
+    color: rgb(39, 61, 102);
+    margin-left: 10px;
+  }
+
+.delete .btn{
+    left: 50%;
+    margin-bottom: 10px;
+    margin-left: 20%;
+    align-items: center;
+  }
+
+.btn {
+  margin-top: 10px;
+  color: white;
+}
+
+.btn-first {
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color: #df3d3d;
+      border: 1.5px solid #e74c3c;
+      border-radius: 0.6em;
+      color: #ffffff;
+      cursor: pointer;
+      align-self: center;
+      font-size: 0.8rem;
+      font-weight: 750;
+      line-height: 1;
+      margin: 5px;
+      text-align: center;
+      padding: 1.2em 2.8em;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .btn:hover, .btn:focus {
+      color: #fff;
+      outline: 0;
+    }
+    

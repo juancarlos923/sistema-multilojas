@@ -1,0 +1,185 @@
+.card-1, .card-2, .card-0 {
+    height: 160px;
+    width: 18rem;
+    border-radius: 15px;
+    margin-top: 15%;
+}
+
+.card-0 a, .card-1 a {
+    margin-left: 27.5%;
+    margin-top: 40px;
+    height: 45px;
+    width: 80px;
+    font-size: 16px;
+}
+
+
+.card-0 {
+    background: linear-gradient(to right, #493240, #f09) !important;
+    color: #fff;
+}
+.card-1 {
+    background: linear-gradient(to right, #373b44, #4286f4) !important;
+    color: #fff;
+}
+.card-2 {
+  background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+    color: #fff;
+}
+
+.card-0 h5, .card-1 h5, .card-2 h5, h3 {
+    opacity: 0.8;
+    color: whitesmoke;
+}
+
+.card-2 {
+    background: rgb(58, 122, 58);
+}
+.card-2 a {
+  margin-left: 27.5%;
+  margin-top: 40px;
+  height: 45px;
+  width:80px;
+  font-size: 16px;
+}
+
+h3 {
+    margin-top: 50%;
+}
+footer {
+    margin-bottom: 10%;
+    position: absolute;
+}
+
+@media (height: 1080px), (width: 1920px) {
+    .navbar-brand svg {
+        margin-right: 5px;
+        height: 40px;
+        width: 40px;
+        color: white;
+      }
+    span {
+        font-size: 18px;
+    }
+    .px-3 {
+        font-size: 18px;
+    }
+
+    .container-fluid{
+        position: absolute;
+        right: 0; left:0;
+        margin-top: 5%;
+        height: 70%;
+    }
+
+    .card-0, .card-1, .card-2 {
+        border-radius: 15px;
+        height: 230px;
+        width: 440px;
+        border-radius: 15px;
+        margin-left: 10%;
+    }
+
+    .card-0 a, .card-1 a{
+      height: 55px;
+      width:110px;
+      font-size: 20px;
+      margin-left: 32%;
+    }
+    .card-2 a {
+      margin-left: 30%;
+      margin-top: 32px;
+      height: 55px;
+      width:110px;
+      font-size: 20px;
+  }
+    .card-2 h5 {
+        margin-bottom: 60px;
+        font-size: 26px;
+        font-weight: bolder;
+        color: white;
+        text-align: center;
+    }
+
+    .card-0 h5, .card-1 h5 {
+        font-size: 32px;
+        font-weight: bolder;
+        color: white;
+        text-align: center;
+        margin-bottom: 42px;
+    }
+
+    footer {
+        margin-top: 70%;
+        margin-bottom: 20%;
+        font-size: 20px;
+    }
+}
+
+@media (max-height: 840px), (max-width: 390px) {
+    .navbar-brand {
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+        font-size: .75rem;
+        background-color: rgba(0, 0, 0, .25);
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+      }
+    
+    .navbar-brand svg {
+        margin-right: 2.5px;
+        height: 30px;
+        width: 30px;
+        color: white;
+      }
+    span {
+        font-size: 16px;
+    }
+    .px-3 {
+        font-size: 16px;
+    }
+
+    .container-fluid{
+        position: relative;
+        right: 0; left:0;
+        margin:0
+    }
+
+    .card-0, .card-1, .card-2 {
+        border-radius: 15px;
+        height: 145px;
+        width: 260px;
+        border-radius: 15px;
+    }
+
+    .card-0 a, .card-1 a{
+        font-size: 14px;
+        text-align: center;
+    }
+    .card-2 a {
+      font-size: 14px;
+      text-align: center;
+  }
+    .card-2 h5 {
+        margin-bottom: 0;
+        font-size: 17px;
+        font-weight: bolder;
+        color: white;
+        text-align: center;
+    }
+
+    .card-0 h5, .card-1 h5 {
+        font-size: 18px;
+        font-weight: bolder;
+        color: white;
+        text-align: center;
+        margin-bottom: 0;
+    }
+    footer{
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        }
+}
+

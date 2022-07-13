@@ -1,0 +1,21 @@
+.delete {
+    margin-left: 27.5%;
+  }
+  .delete a {
+    color: red;
+    text-decoration: none;
+    font-weight: 550;
+    font-size: 18px;
+  }
+  .user_content path {
+    color: rgb(39, 61, 102);
+    margin-left: 10px;
+  }
+
+.delete .btn{
+    left: 50%;
+    margin-bottom: 10px;
+    margin-left: 20%;
+    align-items: center;
+  }
+  

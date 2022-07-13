@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-br">
+  <!--@charset "UTF-8";/*!
+  * Bootstrap v5.1.3 (https://getbootstrap.com/)
+  * Copyright 2011-2021 The Bootstrap Authors
+  * Copyright 2011-2021 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>empresario - Criar Loja</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+
+    <style>
+
+      body{
+        background-color: rgb(39,61,102);
+        color: white;
+      }
+
+      li {
+        color: white;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+  </head>
+  <body>
+  <br>
+<div class="container d-flex align-items-center">
+  <div class="row align-items-center">
+      <div class="col-md-7 col-lg-8 ">
+       <center><h4 class="mb-4">Cadastro de Loja Virtual</h4></center>
+
+        <form class="needs-validation" novalidate>
+          <hr>  
+          <div class="row justify-content-center align-items-center">
+            <div class="col-12">
+              <label for="name" class="form-label">Nome da Loja</label>
+              <input type="text" name="nome" class="form-control" id="username" placeholder="">
+            </div>
+
+            <div class="col-12">
+              <label for="phone" class="form-label">Telefone</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">+55</span>
+                <input type="text" name="telefone" onkeypress="mask(this, mphone);" class="form-control justify-content-center " id="username" placeholder="(XX) XXXXX-XXXX" required>
+              </div>
+              <small style="margin-bottom: 2px;"><i>Telefone para o contato com os clientes</i></small>
+            </div>
+
+            <div class="col-12">
+              <label for="cnpj" class="form-label">CNPJ</label>
+              <input type="text" name="cnpj" id="cnpj" class="form-control" id="cnpj" placeholder=" XX. XXX. XXX/0001-XX">
+            </div>
+
+            <div class="col-md-4 col-lg-12">
+              <label for="description" class="form-label">Descrição</label>
+              <textarea class="form-control" name="descricao" aria-label="With textarea" id="textarea"></textarea>
+              <small style="margin-bottom: 2px;"><i>A descrição será exibida na página da loja</i></small>
+            </div>
+            <div class="col-md-4 col-lg-12">
+              <label for="terms" class="form-label">Termos</label>
+              <textarea class="form-control" name="termos" aria-label="With textarea" id="textarea"></textarea>
+              <small style="margin-bottom: 2px;"><i>Os termos será exibido na página da loja</i></small>
+            </div>
+          <hr class="my-4">
+
+          <br>
+          <button class="w-100 btn btn-primary btn-lg" type="submit" style="margin-top:2%">Finalizar Cadastro</button>
+        </form>
+        <div id="error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<footer class="py-3 my-4">
+  <nav class="navbar navbar-expand-lg aria-label Twelfth navbar example"></nav>
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3" style="color: white;">
+      <li class="nav-item" style="cursor: pointer;"><a href="javascript:history.back()" class="nav-link px-2">Voltar a Página Anterior</a></li>
+      <li class="nav-item" style="cursor: pointer;"><a href="/empresario/" class="nav-link px-2">Dashboard</a></li>
+      <li class="nav-item" style ="cursor: pointer;"><a href="/#contato" class="nav-link px-2" >Contato</a></li>
+      <li class="nav-item" style="cursor: pointer;"><a href="/empresario/login" class="nav-link px-2">Login</a></li>
+      <li class="nav-item" style="cursor: pointer;"><a href="/#sobre" class="nav-link px-2">Sobre</a></li>
+    </ul>
+    <p class="text-center text-muted">&copy; 2021-2022 Multilojas</p>
+</footer>
+
+<script>
+  checkLogin()
+  async function checkLogin() {
+    const url = '/empresario/login/verify';
+    
+    const result = await (await fetch(url)).json();
+    if(result.status != 0){
+      location.href= "/empresario/login";
+    }
+  }
+
+  document.getElementById('cnpj').addEventListener('input', function (e) { // Máscara CNPJ
+      var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+      e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
+  });
+
+  function mask(o, f) { // Máscara Telefone
+    setTimeout(function() {
+      var v = mphone(o.value);
+      if (v != o.value) {
+        o.value = v;
+      }
+    }, 1);
+  }
+
+  function mphone(v) { // Máscara Telefone
+    var r = v.replace(/\D/g, "");
+    r = r.replace(/^0/, "");
+    if (r.length > 10) {
+      r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+    } else if (r.length > 5) {
+      r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+    } else if (r.length > 2) {
+      r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+    } else {
+      r = r.replace(/^(\d*)/, "($1");
+    }
+    return r;
+  }
+
+  const form = document.querySelector('form');
+  const error = document.querySelector('#error');
+  form.onsubmit = (event) => {
+      event.preventDefault();
+  
+      const dados = Object.fromEntries(new FormData(form));
+      createLoja(dados)
+  };
+
+  async function id_login(){
+    const url = '/empresario/login/verify';
+    const result = await (await fetch(url)).json();
+    if(result.status == 0){
+      return result.info.id;
+    }
+  }
+
+  async function createLoja(dados){
+    const id_empresario = await id_login()
+    dados["id_empresario"] = id_empresario;
+    const url = '/loja/cadastro';
+    const config = {
+      method: 'post',
+      body: JSON.stringify(dados),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    };
+
+    const result = await (await fetch(url,config)).json();
+    if(result.error == 0){
+      location.href = "/empresario/"
+    } else {
+      let view = `<div class="alert alert-danger" role="alert">
+        ${result.mensage}
+      </div>`
+      error.insertAdjacentHTML('beforeend', view);
+    }
+  }
+
+</script>
+
+</html>

@@ -1,0 +1,80 @@
+CREATE TABLE compras (
+  id_compra INTEGER PRIMARY KEY AUTOINCREMENT,
+  descricao VARCHAR(100) NULL,
+  valor_total DECIMAL(7,2) NOT NULL,
+  forma_pagamento VARCHAR(14) NOT NULL,
+  entrega VARCHAR(3) NOT NULL,
+  status VARCHAR(14) NOT NULL,
+  id_cliente INTEGER UNIQUE,
+  id_loja INTEGER UNIQUE,
+  data TIMESTAMP NOT NULL UNIQUE,
+  FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
+  FOREIGN KEY (id_loja) REFERENCES lojas(id_loja)
+);
+
+CREATE TABLE produto (
+  id_produto INTEGER PRIMARY KEY AUTOINCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  descricao VARCHAR(100) NULL,
+  categoria VARCHAR(14) NOT NULL,
+  preço NUMERIC(6,2) NOT NULL,
+  forma_entrega VARCHAR(14) NOT NULL,
+  imagem VARCHAR(200),
+  id_loja INTEGER,
+  FOREIGN KEY (id_loja) REFERENCES lojas(id_loja)
+);
+
+CREATE TABLE itens_produto (
+  id_compra INTEGER,
+  id_produto INTEGER,
+  FOREIGN KEY (id_compra) REFERENCES compra(id_compra),
+  FOREIGN KEY (id_produto) REFERENCES produto(id_produto)
+);
+
+CREATE TABLE empresarios (
+  id_empresario INTEGER PRIMARY KEY AUTOINCREMENT,
+  email VARCHAR(60) NOT NULL,
+  nome VARCHAR(50) NOT NULL,
+  senha VARCHAR(50) NOT NULL,
+  telefone VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE lojas (
+  id_loja INTEGER PRIMARY KEY AUTOINCREMENT,
+  nome VARCHAR(40) NOT NULL,
+  descricao VARCHAR(200),
+  telefone VARCHAR(20) NOT NULL,
+  termos VARCHAR(300),
+  cnpj VARCHAR(18) NOT NULL,
+  id_empresario INTEGER UNIQUE,
+	FOREIGN KEY (id_empresario) REFERENCES empresarios(id_empresario)
+);
+
+CREATE TABLE cliente (
+  id_cliente INTEGER PRIMARY KEY AUTOINCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  email VARCHAR(60) NOT NULL,
+  telefone VARCHAR(20) NOT NULL,
+  senha VARCHAR(20) NOT NULL,
+  cpf VARCHAR(20) NOT NULL
+);
+
+
+INSERT INTO cliente (nome, email, endereco, telefone, senha, cpf)
+VALUES ('Juan Carlos', 'teste@teste.com', 'Rua Dom Pedro II', '(88)97777-4444', 'teste', '111.222.333-44');
+
+INSERT INTO empresarios (nome, email, telefone, senha)
+VALUES ('Júlio Caio', 'teste@teste.com', '(88)27777-4444', 'teste');
+
+INSERT INTO lojas (nome, descricao, telefone, termos, cnpj, id_empresario)
+VALUES ('Júlio Caio', 'Descrição de teste', '(22)27777-4444', 'Termos de teste', '00.000.000/0001-91', 1);
+
+INSERT INTO produto (nome, descricao, categoria, preço, forma_entrega, imagem, id_loja)
+VALUES ('O homem mais Rico da Babilônia', 'Livro é de leitura obrigatória no EUA.', 'Livro', 27.2, 'E-mail', 'https://images.vexels.com/media/users/3/214981/isolated/preview/7b8e4754b7104c5612588d7970273f36-icone-da-loja.png', 1);
+
+INSERT INTO compras (descricao, valor_total, forma_pagamento, entrega, status, id_cliente, id_loja, data)
+VALUES ('Os livros é para ser entregue no meu e-mail cadastrado.', 54.1, 'Pix', 'Sim', 'Em processo', 1, 1, '2022-16-06 07:45:00');
+
+INSERT INTO itens_produto (id_compra, id_produto)
+VALUES (1, 1);
+
